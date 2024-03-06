@@ -1,0 +1,63 @@
+
+.address-container,
+.contact-container {
+    display: flex;
+    border-right: 1px solid #808080;
+    padding: 0 15px; 
+
+
+}
+
+.d-flex .align-items-center .contact-container {
+    border-right: none;
+}
+
+.icon-container,
+.details-container {
+    margin-right: 10px;
+}
+
+.details-container p {
+    margin: 0;
+}
+
+
+/* Media query untuk perangkat seluler dengan lebar maksimum 768px */
+@media screen and (max-width: 912px) {
+    .nav-left {
+        flex-direction: row;
+        align-items: flex-start; 
+    }
+    .navbar-collapse {
+        width: 100%; /* Menjadikan lebar 100% agar memenuhi lebar layar */
+    }
+
+    .navbar-toggler {
+        order: -1; /* Mengubah urutan tombol toggler ke atas */
+    }
+
+    .navbar-brand {
+        order: 0; /* Mengubah urutan logo ke atas */
+    }
+
+
+}
+
+.line-feature{
+    width: 280px;
+    height: 4px;
+    margin: auto;
+    opacity: 0;
+    animation: blinkfeature 1s forwards, blink 5s infinite;
+    background: linear-gradient(90deg, rgba(255,5,5,1) 0%, rgba(156,132,132,1) 50%, rgba(83,0,237,1) 100%);
+    border-radius: 25px; 
+}
+@keyframes blinkfeature {
+    to { 
+        opacity: 1; 
+    }
+}
+
+@keyframes blink {
+    50% { opacity: 0; }
+}
