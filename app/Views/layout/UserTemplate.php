@@ -13,8 +13,7 @@
 </head>
 
 <body>
-    <!-- Top navigation bar -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg navbar-light nav-custome">
 
         <div class="container-fluid d-flex flex-column nav-left">
             <div class="flex-row w-100 d-flex">
@@ -104,37 +103,43 @@
 
 
 
-    <!-- top navigation bar -->
-
-    <div id="carouselExampleIndicators" class="carousel slide">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="https://corpec.co.id/wp-content/uploads/2021/04/team-corpec.png" class="d-block w-100" alt="Corpec Inspeksi Utama">
-            </div>
-            <div class="carousel-item">
-                <img src="https://corpec.co.id/wp-content/uploads/2021/04/team-corpec-5.png" class="d-block w-100" alt="Corpec Inspeksi Utama">
-            </div>
-            <div class="carousel-item">
-                <img src="https://corpec.co.id/wp-content/uploads/2021/04/team-corpec-3.png" class="d-block w-100" alt="Corpec Inspeksi Utama">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-    </div>
 
 
     <?= $this->renderSection('content'); ?>
+
+    <footer class="bg-dark text-light">
+        <div class="container">
+            <div class="row pt-5">
+                <div class="col-md-3">
+                    <h6>Judul Alamat 1</h6>
+                    <p>Alamat 1, Kota, Negara</p>
+                </div>
+                <div class="col-md-3">
+                    <h6>Judul Alamat 2</h6>
+                    <p>Alamat 2, Kota, Negara</p>
+                </div>
+                <div class="col-md-3">
+                    <h6>Judul Alamat 3</h6>
+                    <p>Alamat 3, Kota, Negara</p>
+                </div>
+                <div class="col-md-3 m-0">
+                    <small>Call Us </small>
+                    <h5>+62 5735821</h5>
+                    <p>Send and Email For Partnership <br>admin@corpec.co.id</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 text-center py-2">
+                    <p>&copy; 2024 Copyright <b>PT Corpec Inspeksi Utama</b>. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
 
 
     <script src="<?= base_url('assets') ?>/js/bootstrap.bundle.min.js"></script>

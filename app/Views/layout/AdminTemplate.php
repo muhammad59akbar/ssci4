@@ -40,7 +40,7 @@
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="">Logout</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('/corpecpro/logout') ?>">Logout</a></li>
                         </ul>
                     </li>
 
@@ -120,7 +120,7 @@
                     </li>
 
                     <li>
-                        <a href="" class="nav-link px-3">
+                        <a href="<?= site_url('/corpecpro/logout') ?>" class="nav-link px-3">
                             <span class="me-2"><i class="bi bi-box-arrow-right"></i>
                                 <span class="ms-2">Logout</span>
                         </a>
