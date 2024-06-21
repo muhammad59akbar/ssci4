@@ -11,6 +11,11 @@
     <link rel="stylesheet" href="<?= base_url('assets') ?>/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="<?= base_url('assets') ?>/css/dashboard.css" />
 </head>
+<style>
+    .ck-editor__editable {
+        min-height: 200px;
+    }
+</style>
 
 <body>
     <!-- top navigation bar -->
@@ -31,8 +36,8 @@
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 me-2">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="me-2 d-lg-inline text-gray-600"></span>
-                            <img src="" width="40px" height="40px" class="rounded-circle">
+                            <span class="me-2 d-lg-inline text-gray-600"><?= user()->username; ?></span>
+                            <img src="<?php base_url() ?>/assets/images/<?= user()->image_karyawan; ?>" width="40px" height="40px" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="">Profile</a></li>
@@ -52,84 +57,7 @@
     <!-- top navigation bar -->
 
 
-    <!-- offcanvas -->
-    <div class="offcanvas offcanvas-start sidebar-nav" tabindex="-1" id="sidebar" style="background-color:#0C395F;">
-        <div class="offcanvas-body p-0">
-            <nav class="navbar-dark">
-                <ul class="navbar-nav">
-                    <li>
-                        <div class="text-muted small fw-bold text-uppercase p-3">
-                            CORE
-                        </div>
-                    </li>
-                    <li>
-                        <a href="" class="nav-link px-3">
-                            <span class="me-2"><i class="bi bi-speedometer2"></i></span>
-                            <span class="ms-1">Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="my-2">
-                        <hr class="dropdown-divider bg-light" />
-                    </li>
-                    <li>
-                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                            Interface
-                        </div>
-                    </li>
-                    <li>
-                        <a class="nav-link px-3 sidebar-link" data-bs-toggle="collapse" href="#post">
-                            <span class="me-2"><i class="bi bi-layout-split"></i></span>
-                            <span class="ms-2">Post</span>
-                            <span class="ms-auto">
-                                <span class="right-icon">
-                                    <i class="bi bi-chevron-down"></i>
-                                </span>
-                            </span>
-                        </a>
-                        <div class="collapse" id="post">
-                            <ul class="navbar-nav ps-3">
-                                <li>
-                                    <a href="" class="nav-link px-3">
-                                        <span class="me-2"><i class="bi bi-pencil-square"></i>
-                                            <span class="ms-2">Write Post</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="" class="nav-link px-3">
-                                        <span class="me-2"><i class="bi bi-sticky"></i>
-                                            <span class="ms-2">View Post</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-
-                    <li class="my-2">
-                        <hr class="dropdown-divider bg-light" />
-                    </li>
-                    <li>
-                        <div class="text-muted small fw-bold text-uppercase px-3 mb-3">
-                            Addons
-                        </div>
-                    </li>
-                    <li>
-                        <a href="" class="nav-link px-3">
-                            <span class="me-2"><i class="bi bi-person-lines-fill"></i>
-                                <span class="ms-2">Profile</span>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="<?= site_url('/corpecpro/logout') ?>" class="nav-link px-3">
-                            <span class="me-2"><i class="bi bi-box-arrow-right"></i>
-                                <span class="ms-2">Logout</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
-    </div>
-    <!-- offcanvas -->
+    <?= $this->include('layout/SidebarAdmin'); ?>
 
     <?= $this->renderSection('content'); ?>
 
@@ -140,6 +68,13 @@
     <script src="<?= base_url('assets') ?>/js/jquery.dataTables.min.js"></script>
     <script src="<?= base_url('assets') ?>/js/dataTables.bootstrap5.min.js"></script>
     <script type="text/javascript" src="<?= base_url('assets') ?>/js/script.js"></script>
+    <script type="text/javascript" src="<?= base_url('assets') ?>/plugins/ckeditor5/ckeditor.js"></script>
+    <!-- <script>
+        CKEDITOR.replace('mytextarea');
+    </script> -->
+    <!--  <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script> -->
+
+
 </body>
 
 </html>

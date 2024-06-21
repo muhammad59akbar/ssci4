@@ -23,7 +23,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <a class="navbar-brand px-3 order-1 order-md-0" href="#">
-                    <img src="https://corpec.co.id/wp-content/uploads/2021/04/logo-web-corpec-2.png" alt="Logo Corpec">
+                    <img src="https://corpec.co.id/wp-content/uploads/2021/04/logo-web-corpec-2.png" alt="Logo ">
                 </a>
 
                 <!-- Address and Contact Details -->
@@ -36,7 +36,9 @@
                                 <i class="bi bi-geo-alt fs-3"></i>
                             </div>
                             <div class="details-container address-details">
-                                <p class="m-0">Jl. Penjernihan Dalam No.46 <br> Pejompongan, Jakarta Pusat</p>
+                                <p class="m-0">Jl. Penjernihan Dalam No.46
+                                    <br> Pejompongan, Jakarta Pusat
+                                </p>
                             </div>
                         </div>
 
@@ -47,7 +49,7 @@
                             </div>
                             <div class="details-container">
                                 <p class="m-0">admin@corpec.co.id</p>
-                                <p class="m-0">+62 5735821</p>
+                                <p class="m-0">+625735821</p>
                             </div>
                         </div>
 
@@ -59,11 +61,9 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="<?= base_url('/') ?>">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Company</a>
-                    </li>
+                    <a class="nav-link" href="<?= base_url('/profile') ?>">Profile Company</a>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Service
@@ -84,18 +84,11 @@
                             <li><a class="dropdown-item" href="#">Audit</a></li>
                         </ul>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Corpec History</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Vision Mission</a>
-                    </li>
+
                     <li class="nav-item">
                         <a class="nav-link" href="#">Our Partner</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contact Us</a>
-                    </li>
+
                 </ul>
             </div>
         </div>
@@ -130,7 +123,7 @@
             </div>
             <div class="row">
                 <div class="col-md-12 text-center py-2">
-                    <p>&copy; 2024 Copyright <b>PT Corpec Inspeksi Utama</b>. All rights reserved.</p>
+                    <p>&copy; 2024 Copyright <b>PT. Corpec Inspeksi Utama </b>. All rights reserved.</p>
                 </div>
             </div>
         </div>

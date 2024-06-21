@@ -11,15 +11,15 @@
         <div class="row" style="margin-right: 0;">
 
             <div class="col-md-6 text-center">
-                <img src="https://pbs.twimg.com/profile_images/985799194626506752/zs88CTIB_400x400.jpg" class="img-fluid" alt="Gambar">
+                <img src="" class="img-fluid" alt="Gambar">
             </div>
             <div class="col-md-6 intro-title">
-                <h1>PT. Corpec Inspeksi Utama</h1>
+                <h1>PT. Corpec Inspeksi Utama </h1>
                 <h3>Certification, Inspection, Testing</h3>
                 <p class="text-justify">
                     PT. Corpec Inspeksi Utama is a company established with the professional spirit. It is company objective to have wide range of the inspection service to satisfy the clients with excellent quality of work and professional resources. Developing mutual beneficial relationship and extensive network with professionals and business entities within area is our commitments in business.
                 </p>
-                <a href="#" class="btn btn-primary">View Profile</a>
+                <a href="<?= base_url('/profile') ?>" class="btn btn-primary">View Profile</a>
             </div>
         </div>
     </div>

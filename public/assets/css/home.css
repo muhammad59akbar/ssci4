@@ -5,7 +5,7 @@
     background-color: #ffffff;
     width: 100%;
 }
-.corousel-custome{
+.padding-custome{
     padding-top: 5rem;
     margin-top: 3.5rem;
 }
@@ -42,6 +42,8 @@
 }
 
 
+
+
 /* Media query untuk perangkat seluler dengan lebar maksimum 768px */
 @media screen and (max-width: 912px) {
     .nav-left {
@@ -59,7 +61,7 @@
     .navbar-brand {
         order: 0; /* Mengubah urutan logo ke atas */
     }
-    .corousel-custome{
+    .padding-custome{
         padding-top: 3.5rem;
         margin-top: 2rem;
     }
