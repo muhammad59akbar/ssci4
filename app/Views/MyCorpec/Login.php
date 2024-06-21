@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login My Corpec</title>
+    <title>Login My Corp</title>
     <!-- Bootstrap CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -15,7 +15,7 @@
             <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src="https://corpec.co.id/wp-content/uploads/2021/04/favicon.png" class="img-fluid rounded-circle mb-4 mx-auto d-block" alt="Logo" style="width: 100px;">
+                        <img src="" class="img-fluid rounded-circle mb-4 mx-auto d-block" alt="Logo" style="width: 100px;">
                         <h1 class="text-center">Login</h1>
                         <?= view('Myth\Auth\Views\_message_block') ?>
 

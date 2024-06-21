@@ -70,6 +70,10 @@ class Filters extends BaseConfig
      * 'isLoggedIn' => ['before' => ['account/*', 'profiles/*']]
      */
     public array $filters = [
-        'login' => ['before' => ['/MyCorpec/Dashboard']],
+        'login' => ['before' => [
+            '/MyCorpec/*',
+            '/CorpecBlog/*'
+
+        ]],
     ];
 }

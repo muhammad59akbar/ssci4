@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-md-12">
                 <h4>Welcome Back </h4>
-                <h4>tester</h4>
+                <h1 class="text-center"><?= user()->username; ?></h1>
             </div>
         </div>
 
