@@ -106,3 +106,7 @@
 @keyframes blink {
     50% { opacity: 0; }
 }
+
+.custom-padding {
+    padding: 0.5rem; /* Padding jika ada isinya */
+}

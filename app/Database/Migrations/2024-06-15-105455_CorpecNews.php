@@ -31,6 +31,10 @@ class CorpecNews extends Migration
                 'type' => 'TEXT',
                 'null' => true,
             ],
+            'category_News' => [
+                'type' => 'iNT',
+                'constraint' => '11',
+            ],
             'created_at' => [
                 'type' => 'DATETIME',
                 'null' => true,

@@ -20,16 +20,31 @@ class MyCorpec extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Admin Dashboard'
+            'title' => 'Admin Dashboard',
+            'userGroup' => $this->userGroup
+
         ];
         return view('MyCorpec/Dashboard', $data);
+    }
+    public function Profile()
+    {
+        $data = [
+            'title' => 'My Profile',
+            'userGroup' => $this->userGroup
+
+        ];
+        return view('MyCorpec/Profile', $data);
     }
 
 
     public function List_Karyawan()
     {
+        if (in_array($this->userGroup, ['Admin', 'Mandor', 'Teknisi'])) {
+            return redirect()->to('/MyCorpec/Dashboard');
+        }
         $data['title'] = 'List Karyawan';
 
+        $data['userGroup'] = $this->userGroup;
         $db = \Config\Database::connect();
         $builder = $db->table('users');
         $builder->select('users.id as userid, username, email, fullname, auth_groups.name as jabatan');
@@ -43,6 +58,9 @@ class MyCorpec extends BaseController
 
     public function NewKaryawan()
     {
+        if (in_array($this->userGroup, ['Admin', 'Mandor', 'Teknisi'])) {
+            return redirect()->to('/MyCorpec/Dashboard');
+        }
 
         $validasiInput = session()->getFlashdata('ValidNewKaryawan');
 
@@ -51,9 +69,9 @@ class MyCorpec extends BaseController
             [
                 'title' => 'Tambah Karyawan',
                 'ValidNewKaryawan' =>  $validasiInput,
+                'userGroup' => $this->userGroup,
 
-                // 'redirectedErrors' => session()->getFlashdata("redirectedErrors") ?: "",
-                // 'redirectedInput' => session()->getFlashdata("redirectedInput") ?? [],
+
             ];
         return view('MyCorpec/AddKaryawan', $data);
     }
@@ -112,6 +130,12 @@ class MyCorpec extends BaseController
                 ]
 
             ],
+            'salary' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Gaji must be filled in',
+                ]
+            ],
 
             'jabatan' => 'required'
         ])) {
@@ -120,9 +144,6 @@ class MyCorpec extends BaseController
 
 
             return redirect()->to('MyCorpec/Add_Karyawan')->withInput()->with('ValidNewKaryawan', $validasiInput);
-
-            // return redirect()->to('MyCorpec/Add_Karyawan')->withInput()->with("redirectedErrors", $validasiInput->listErrors())
-            //     ->with("redirectedInput", $this->request->getVar());
         }
 
 
@@ -141,6 +162,7 @@ class MyCorpec extends BaseController
             'email' => $this->request->getVar('email'),
             'fullname' => $this->request->getVar('namaLengkap'),
             'image_karyawan' => $NFotorKrywn,
+            'gaji_karyawan' => $this->request->getVar('salary'),
             'nik_krywn' => $this->request->getVar('nik_karyawan'),
             'usia_karyawan' => $this->request->getVar('usia'),
             'rek_karyawan' => $this->request->getVar('norekening'),
@@ -165,11 +187,15 @@ class MyCorpec extends BaseController
 
     public function Detail_Karyawan($id_karyawan)
     {
+        if (in_array($this->userGroup, ['Admin', 'Mandor', 'Teknisi'])) {
+            return redirect()->to('/MyCorpec/Dashboard');
+        }
         $validasiInput = session()->getFlashdata('validationupdate');
 
         $data = [
             'title' => 'Edit Karyawan',
-            'validationupdate' => $validasiInput
+            'validationupdate' => $validasiInput,
+            'userGroup' => $this->userGroup
         ];
         $db = \Config\Database::connect();
         $builder = $db->table('users');
@@ -201,7 +227,7 @@ class MyCorpec extends BaseController
                 ]
             ],
             'username' => [
-                'rules' => 'required|min_length[4]|max_length[30]|is_unique[users.username,id,' . $id_karyawan . ']',
+                'rules' => 'required|min_length[4]|max_length[30]|strtolower|is_unique[users.username,id,' . $id_karyawan . ']',
                 'errors' => [
                     'required' => '{field} must be filled in.',
                     'is_unique' => '{field} already registered.',
@@ -246,9 +272,23 @@ class MyCorpec extends BaseController
                 ]
 
             ],
+            'salary' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Gaji must be filled in',
+
+                ]
+            ],
+            'password' => [
+                'rules' => 'permit_empty|min_length[5]',
+                'errors' => [
+                    'min_length' => 'Password must be at least 5 characters long',
+                ]
+            ],
         ])) {
             $validationErrors = \Config\Services::validation()->getErrors();
-            dd($validationErrors);
+
+
 
 
             return redirect()->back()->withInput()->with('validationupdate', $validationErrors);
@@ -257,11 +297,11 @@ class MyCorpec extends BaseController
         $fotoKaryawan = $this->request->getFile('foto_krywn');
         $rekKTP = $this->request->getFile('rekktp');
 
-        // Proses file foto_krywn jika ada
+
         if ($fotoKaryawan && !$fotoKaryawan->hasMoved() && $fotoKaryawan->isValid()) {
             $NFotoKrywn = $fotoKaryawan->getRandomName();
             $fotoKaryawan->move('assets/images/karyawan/', $NFotoKrywn);
-            // Hapus file lama jika ada
+
             $oldFotoPath = 'assets/images/karyawan/' . $this->request->getVar('fotolama');
             if (file_exists($oldFotoPath) && !empty($this->request->getVar('fotolama'))) {
                 unlink($oldFotoPath);
@@ -270,11 +310,10 @@ class MyCorpec extends BaseController
             $NFotoKrywn = $this->request->getVar('fotolama');
         }
 
-        // Proses file rekktp jika ada
         if ($rekKTP && !$rekKTP->hasMoved() && $rekKTP->isValid()) {
             $NRekKTP = $rekKTP->getRandomName();
             $rekKTP->move('assets/images/rek/', $NRekKTP);
-            // Hapus file lama jika ada
+
             $oldRekPath = 'assets/images/rek/' . $this->request->getVar('rektplama');
             if (file_exists($oldRekPath) && !empty($this->request->getVar('rektplama'))) {
                 unlink($oldRekPath);
@@ -285,14 +324,21 @@ class MyCorpec extends BaseController
 
         $data = [
             'email' => $this->request->getVar('email'),
-            'username' => $this->request->getVar('username'),
+            'username' => strtolower($this->request->getVar('username')),
             'fullname' => $this->request->getVar('namaLengkap'),
             'nik_krywn' => $this->request->getVar('nik'),
             'usia_karyawan' => $this->request->getVar('usia'),
             'rek_karyawan' => $this->request->getVar('norekening'),
             'image_karyawan' => $NFotoKrywn,
-            'gmbr_rekktp' => $NRekKTP
+            'gmbr_rekktp' => $NRekKTP,
+            'gaji_karyawan' => $this->request->getVar('salary'),
         ];
+
+
+        $password = $this->request->getVar('password');
+        if (!empty($password)) {
+            $data['password_hash'] = Password::hash($password, PASSWORD_BCRYPT);
+        }
 
         // Update the karyawan data
         $db = \Config\Database::connect();

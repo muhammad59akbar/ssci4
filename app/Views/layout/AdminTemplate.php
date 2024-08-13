@@ -10,10 +10,26 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="<?= base_url('assets') ?>/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="<?= base_url('assets') ?>/css/dashboard.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 </head>
 <style>
     .ck-editor__editable {
         min-height: 200px;
+    }
+
+    @media (min-width: 320px) {
+        #my_camera video {
+            max-width: 70%;
+            max-height: 80%;
+        }
+    }
+
+    @media (min-width: 576px) {
+        #my_camera video {
+            max-width: 100%;
+            max-height: 100%;
+        }
     }
 </style>
 
@@ -37,11 +53,11 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="me-2 d-lg-inline text-gray-600"><?= user()->username; ?></span>
-                            <img src="<?php base_url() ?>/assets/images/<?= user()->image_karyawan; ?>" width="40px" height="40px" class="rounded-circle">
+                            <img src="<?php base_url() ?>/assets/images/karyawan/<?= user()->image_karyawan; ?>" width="40px" height="40px" class="rounded-circle">
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="">Profile</a></li>
-                            <li><a class="dropdown-item" href="">Settings</a></li>
+                            <li><a class="dropdown-item" href="<?= base_url('/MyCorpec/Profile') ?>">Profile</a></li>
+
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -67,14 +83,20 @@
     <script src="<?= base_url('assets') ?>/js/jquery-3.5.1.js"></script>
     <script src="<?= base_url('assets') ?>/js/jquery.dataTables.min.js"></script>
     <script src="<?= base_url('assets') ?>/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script type="text/javascript" src="<?= base_url('assets') ?>/js/script.js"></script>
     <script type="text/javascript" src="<?= base_url('assets') ?>/plugins/ckeditor5/ckeditor.js"></script>
-    <!-- <script>
-        CKEDITOR.replace('mytextarea');
-    </script> -->
-    <!--  <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script> -->
+
+    <script>
+        new DataTable('#myTable');
+        $(document).ready(function() {
+            $('.select2').select2();
+        });
+    </script>
 
 
 </body>
+
 
 </html>

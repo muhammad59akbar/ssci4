@@ -15,7 +15,7 @@
             <div class="col-lg-3">
                 <div class="card">
                     <div class="card-body">
-                        <img src="" class="img-fluid rounded-circle mb-4 mx-auto d-block" alt="Logo" style="width: 100px;">
+                        <img src="<?= base_url('assets/images/corpeclogin.png') ?>" class="img-fluid rounded-circle mb-4 mx-auto d-block" alt="Logo" style="width: 100px;">
                         <h1 class="text-center">Login</h1>
                         <?= view('Myth\Auth\Views\_message_block') ?>
 
@@ -48,12 +48,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-block">Login</button>
                         </form>
-                        <?php if ($config->allowRegistration) : ?>
-                            <p><a href="<?= url_to('register') ?>"><?= lang('Auth.needAnAccount') ?></a></p>
-                        <?php endif; ?>
-                        <?php if ($config->activeResetter) : ?>
-                            <p><a href="<?= url_to('forgot') ?>"><?= lang('Auth.forgotYourPassword') ?></a></p>
-                        <?php endif; ?>
+
                     </div>
                 </div>
             </div>

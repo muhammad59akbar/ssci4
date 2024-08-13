@@ -8,7 +8,7 @@ class KaryawanModels extends Model
 {
     protected $table = 'users';
     protected $useTimestamps = true;
-    protected $allowedFields = ['username', 'email', 'fullname', 'usia_karyawan', 'nik_krywn', 'rek_karyawan', 'password_hash', 'image_karyawan', 'gmbr_rekktp', 'active'];
+    protected $allowedFields = ['username', 'email', 'fullname', 'usia_karyawan', 'nik_krywn', 'rek_karyawan', 'password_hash', 'image_karyawan', 'gmbr_rekktp', 'gaji_karyawan', 'active'];
 
     public function createNew($userData)
     {

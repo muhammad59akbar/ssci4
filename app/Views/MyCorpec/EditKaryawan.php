@@ -12,7 +12,6 @@
                     </div>
                 <?php endif; ?>
                 <hr>
-                <?= d($karyawan) ?>
                 <a href="<?= base_url('MyCorpec/List_Karyawan') ?>" class="m-2">&laquo; kembali</a>
                 <form action="/MyCorpec/edit_karyawan/<?= $karyawan->userid ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
@@ -103,6 +102,20 @@
                             <?php endif ?>
                         </div>
 
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="salary" class="form-label">Gaji Karyawan</label>
+                        <input type="number" class="form-control <?= isset($ValidNewKaryawan['salary']) ? 'is-invalid' : '' ?>" id="salary" name="salary" aria-describedby="salary" value="<?= $karyawan->gaji_karyawan ?>">
+                        <?php if (isset($ValidNewKaryawan['salary'])) : ?>
+                            <div class="invalid-feedback"><?= ($ValidNewKaryawan['salary']) ?></div>
+                        <?php endif ?>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control <?= isset($ValidNewKaryawan['password']) ? 'is-invalid' : '' ?>" id="password" name="password" aria-describedby="password">
+                        <?php if (isset($ValidNewKaryawan['password'])) : ?>
+                            <div class="invalid-feedback"><?= ($ValidNewKaryawan['password']) ?></div>
+                        <?php endif ?>
                     </div>
                     <div class="mb-3 mt-3">
                         <label class="form-label">Jabatan</label>

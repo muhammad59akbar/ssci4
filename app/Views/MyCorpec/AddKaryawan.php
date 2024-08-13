@@ -39,7 +39,7 @@
                         </div>
                         <div class="col">
                             <label for="foto_krywn" class="form-label mx-2">Foto Karyawan</label>
-                            <input class="form-control  <?= isset($ValidNewKaryawan['foto_krywn']) ? 'is-invalid' : '' ?>" type="file" id="foto_krywn" name="foto_krywn" onchange="changeImg()">
+                            <input class="form-control  <?= isset($ValidNewKaryawan['foto_krywn']) ? 'is-invalid' : '' ?>" type="file" id="foto_krywn" name="foto_krywn" onchange="changeImg()" value="<?= old('foto_krywn') ?>">
                             <?php if (isset($ValidNewKaryawan['foto_krywn'])) : ?>
                                 <div class="invalid-feedback mx-2"><?= ($ValidNewKaryawan['foto_krywn']) ?></div>
                             <?php endif ?>
@@ -109,6 +109,13 @@
                             <?php endif ?>
                         </div>
 
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="salary" class="form-label">Gaji Karyawan</label>
+                        <input type="number" class="form-control <?= isset($ValidNewKaryawan['salary']) ? 'is-invalid' : '' ?>" id="salary" name="salary" aria-describedby="salary" value="<?= old('salary') ?>">
+                        <?php if (isset($ValidNewKaryawan['salary'])) : ?>
+                            <div class="invalid-feedback"><?= ($ValidNewKaryawan['salary']) ?></div>
+                        <?php endif ?>
                     </div>
                     <div class="mb-3 mt-3">
                         <label class="form-label">Jabatan</label>

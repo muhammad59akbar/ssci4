@@ -22,8 +22,8 @@
                 <button class="navbar-toggler " type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <a class="navbar-brand px-3 order-1 order-md-0" href="#">
-                    <img src="https://corpec.co.id/wp-content/uploads/2021/04/logo-web-corpec-2.png" alt="Logo ">
+                <a class="navbar-brand px-3 order-1 order-md-0" href="/">
+                    <img src="<?= base_url('assets/images/logo-web-corpec-2.png') ?>" alt="Logo ">
                 </a>
 
                 <!-- Address and Contact Details -->
@@ -68,25 +68,25 @@
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             Service
                         </a>
+                        <?php $categories = [
+                            'engineering' => 'Engineering',
+                            'industrial' => 'Industrial',
+                            'consumer-goods' => 'Consumer Goods',
+                            'audit' => 'Audit'
+                        ]; ?>
+
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Engineering</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Industrial</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Consumer Goods</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Audit</a></li>
+                            <?php foreach ($categories as $slug => $name) : ?>
+                                <li><a class="dropdown-item" href="/category/<?= urlencode($slug) ?>"><?= $name ?></a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                            <?php endforeach; ?>
                         </ul>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Our Partner</a>
+                        <a class="nav-link" href="<?= base_url('/partnership') ?>">Our Partner</a>
                     </li>
 
                 </ul>
@@ -97,23 +97,25 @@
 
 
 
-
     <?= $this->renderSection('content'); ?>
 
     <footer class="bg-dark text-light">
         <div class="container">
             <div class="row pt-5">
                 <div class="col-md-3">
-                    <h6>Judul Alamat 1</h6>
-                    <p>Alamat 1, Kota, Negara</p>
+                    <h6>Head Office</h6>
+                    <p>Jl. Penjernihan Dalam No.46
+                        Pejompongan, Jakarta Pusat
+                        DKI Jakarta 10210 - Indonesia</p>
                 </div>
                 <div class="col-md-3">
-                    <h6>Judul Alamat 2</h6>
-                    <p>Alamat 2, Kota, Negara</p>
+                    <h6>Operational Office</h6>
+                    <p>Jl. Sirsak – H. Usman RT 001/002 No. 32B, Jagakarsa, Jakarta Selatan, DKI Jakarta 12620</p>
                 </div>
                 <div class="col-md-3">
-                    <h6>Judul Alamat 3</h6>
-                    <p>Alamat 3, Kota, Negara</p>
+                    <h6>WorkShop</h6>
+                    <p>Jl. Swadaya 12 No.62 Harapan Baru
+                        Regency, Pulogebang, Jakarta Timur</p>
                 </div>
                 <div class="col-md-3 m-0">
                     <small>Call Us </small>

@@ -27,6 +27,8 @@ class Filters extends BaseConfig
         'login'      => \Myth\Auth\Filters\LoginFilter::class,
         'role'       => \Myth\Auth\Filters\RoleFilter::class,
         'permission' => \Myth\Auth\Filters\PermissionFilter::class,
+        'attendance' => \App\Filters\AttendanceFilter::class,
+        'outattandance' => \App\Filters\OutFilter::class,
     ];
 
     /**
@@ -38,6 +40,8 @@ class Filters extends BaseConfig
     public array $globals = [
         'before' => [
             'honeypot',
+            'attendance',
+            'outattandance',
             // 'login',
             // 'csrf',
             // 'invalidchars',
@@ -72,7 +76,9 @@ class Filters extends BaseConfig
     public array $filters = [
         'login' => ['before' => [
             '/MyCorpec/*',
-            '/CorpecBlog/*'
+            '/CorpecBlog/*',
+            '/MyCorp/*',
+
 
         ]],
     ];

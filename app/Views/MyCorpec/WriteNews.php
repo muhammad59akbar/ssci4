@@ -10,26 +10,29 @@
 
                 <a href="ListBlog" class="m-2">&laquo; Back</a>
 
-                <?= d($validationInput) ?>
+
 
                 <form action="<?= base_url('CorpecBlog/CreateNews') ?>" method="post" enctype="multipart/form-data">
                     <?= csrf_field(); ?>
                     <div class="mb-3 mt-4">
                         <label for="titleNews" class="form-label mx-2">Title</label>
-                        <input type="text" class="form-control mx-2 <?= ($validationInput['titleNews']) ? 'is-invalid' : '' ?>" id="titleNews" aria-describedby="titleNews" name="titleNews" autocomplete="on">
+                        <input type="text" class="form-control mx-2 <?= isset($validationInput['titleNews']) ? 'is-invalid' : '' ?>" id="titleNews" aria-describedby="titleNews" name="titleNews" autocomplete="on" value="<?= old('titleNews') ?>">
+                        <?php if (isset($validationInput['titleNews'])) : ?>
+                            <div class="invalid-feedback mx-2"><?= ($validationInput['titleNews']) ?></div>
+                        <?php endif ?>
                     </div>
 
 
                     <div class="row mb-2">
                         <div class="col-sm-3 flex flex-column mb-2">
-                            <img class="img-thumbnail" src="<?= base_url('assets/images/addimage.png') ?>" alt="" width="250" height="250" id="previmagekrywn">
+                            <img class="img-thumbnail" src="<?= base_url('assets/images/addimage.png') ?>" alt="" width="250" height="250" id="previmageNews">
 
                         </div>
                         <div class="col">
-                            <label for="foto_krywn" class="form-label mx-2">Foto Karyawan</label>
-                            <input class="form-control  <?= isset($ValidNewKaryawan['foto_krywn']) ? 'is-invalid' : '' ?>" type="file" id="foto_krywn" name="foto_krywn" onchange="changeImg()">
-                            <?php if (isset($ValidNewKaryawan['foto_krywn'])) : ?>
-                                <div class="invalid-feedback mx-2"><?= ($ValidNewKaryawan['foto_krywn']) ?></div>
+                            <label for="image_news" class="form-label mx-2">Image News</label>
+                            <input class="form-control  <?= isset($validationInput['image_news']) ? 'is-invalid' : '' ?>" type="file" id="image_news" name="image_news" onchange="changeImg()" value="<?= old('image_news') ?>">
+                            <?php if (isset($validationInput['image_news'])) : ?>
+                                <div class="invalid-feedback mx-2"><?= ($validationInput['image_news']) ?></div>
                             <?php endif ?>
 
                         </div>
@@ -38,7 +41,22 @@
 
                     </div>
                     <div class="mb-3 mt-4">
-                        <textarea class="content_news" name="content_news" id="content_news" style="display: none;"></textarea>
+                        <textarea class="content_news <?= isset($validationInput['content_news']) ? 'is-invalid' : '' ?>" name="content_news" id="content_news" style="display: none;"><?= old('content_news') ?></textarea>
+                        <?php if (isset($validationInput['content_news'])) : ?>
+                            <div class="invalid-feedback mx-2"><?= ($validationInput['content_news']) ?></div>
+                        <?php endif ?>
+
+                    </div>
+
+                    <div class="mb-3 mt-3">
+                        <label class="form-label">Category</label>
+                        <select class="form-select" aria-label="Default select example" name="category_news">
+                            <option value="1">Engineering</option>
+                            <option value="2">Industrial</option>
+                            <option value="3">Consumer Goods</option>
+                            <option value="4">Audit</option>
+                        </select>
+
                     </div>
 
 

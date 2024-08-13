@@ -35,7 +35,11 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['auth'];
+    protected $helpers = ['auth', 'currency'];
+
+    protected $auth;
+    protected $user;
+    protected $userGroup;
 
     /**
      * Be sure to declare properties for any property fetch you initialized.
@@ -51,8 +55,28 @@ abstract class BaseController extends Controller
         // Do Not Edit This Line
         parent::initController($request, $response, $logger);
 
+        $this->auth = service('authentication');
+
+        if ($this->auth->check()) {
+            $this->user = $this->auth->user();
+            $this->userGroup = $this->getUserGroup($this->user->id);
+        }
         // Preload any models, libraries, etc, here.
 
+
+
         // E.g.: $this->session = \Config\Services::session();
+    }
+    private function getUserGroup($userId)
+    {
+        $db = \Config\Database::connect();
+        $builder = $db->table('auth_groups_users');
+        $builder->select('auth_groups.name');
+        $builder->join('auth_groups', 'auth_groups.id = auth_groups_users.group_id');
+        $builder->where('auth_groups_users.user_id', $userId);
+        $query = $builder->get();
+        $group = $query->getRow();
+
+        return $group ? $group->name : null;
     }
 }
